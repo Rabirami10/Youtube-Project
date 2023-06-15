@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def youtube():
-    api_key = 'AIzaSyDnAHova2QtxKAjcNTbGoErMP1_vMqvXQo'
+    api_key = 'AIzaSyAKxjHsvUYyWi2qDjXbuDjN_noEtAhOxuQ'
     api_service_name = "youtube"
     api_version = "v3"
     yt = build(api_service_name, api_version, developerKey=api_key)

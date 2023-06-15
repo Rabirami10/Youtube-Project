@@ -30,12 +30,13 @@ def main():
 
     select_box = st.sidebar.selectbox("Select a Question", [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10])
     if channel_id:
+        channel_data = YTdata.get_channel_info(channel_id)
+        video_ids = YTdata.get_video_id(channel_data)
+        video_details = YTdata.get_video_details(video_ids)
+        comment_details = YTdata.get_comment_details(video_ids)
+        retrieved_data = YTdata.merge_data(channel_data, video_details, comment_details)
+
         if retrieve_data_button:
-            channel_data = YTdata.get_channel_info(channel_id)
-            video_ids = YTdata.get_video_id(channel_data)
-            video_details = YTdata.get_video_details(video_ids)
-            comment_details = YTdata.get_comment_details(video_ids)
-            retrieved_data = YTdata.merge_data(channel_data, video_details, comment_details)
             st.write(retrieved_data)
         if move_to_mongodb_button:
             connection = pymongodb.create_mongodb_connection()
